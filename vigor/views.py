@@ -36,7 +36,6 @@ def signup(request):
             print(user)
             if user is not None:
                 auth_login(request, user)
-                return HttpResponse("Success!")
                 return HttpResponseRedirect("/vigor/dashboard") # change to just `/dashboard` when in production
             else:
                 print("Internal Server Error")
