@@ -13,18 +13,16 @@ def index(request):
     return HttpResponse(template.render(context, request))
 
 def login(request):
-    # if not request.user.is_authenticated():
-    #     if request.method == 'POST':
-    #         username = request.POST['username']
-    #         password = request.POST['password']
-    #         user = authenticate(username=username, password=password)
-    #         if user is not None:
-    #             auth_login(request, user)
-    #             return HttpResponseRedirect("/vigor/dashboard") # change to just `/dashboard` when in production
-    #         else:
-    #             print("Internal Server Error")
-    # return render(request, 'vigor/login.html')
-    return 0
+    if request.method == 'POST':
+        username = request.POST['username']
+        password = request.POST['password']
+        user = authenticate(username=username, password=password)
+        if user is not None:
+            auth_login(request, user)
+            return HttpResponseRedirect("/vigor/dashboard") # change to just `/dashboard` when in production
+        else:
+            print("Internal Server Error")
+    return render(request, 'vigor/login.html')
 
 @csrf_exempt
 def signup(request):
