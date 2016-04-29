@@ -1,0 +1,11 @@
+<form method="post" action=".">
+  {% csrf_token %}
+  Username: <input type="text" name="username" value="" size="50" />
+  Password: <input type="password" name="password" value="" size="50" />
+
+  <input type="submit" value="Login" />
+  <input type="hidden" name="next" value="{{ next }}" />
+</form>
+
+<p><a href="#">Reset Password</a></p>
+<p><a href="#">Signup</a></p>
