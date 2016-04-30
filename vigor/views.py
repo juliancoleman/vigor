@@ -13,6 +13,9 @@ def index(request):
     return HttpResponse(template.render(context, request))
 
 def login(request):
+    if request.user.is_authenticated():
+        return HttpResponseRedirect("/vigor/dashboard")
+
     if request.method == 'POST':
         username = request.POST['username']
         password = request.POST['password']
@@ -26,6 +29,9 @@ def login(request):
 
 @csrf_exempt
 def signup(request):
+    if request.user.is_authenticated():
+        return HttpResponseRedirect("/vigor/dashboard")
+
     if request.method == "POST":
         form = UserCreationFormExtended(data = request.POST)
         if form.is_valid():
