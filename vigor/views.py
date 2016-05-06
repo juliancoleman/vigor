@@ -4,9 +4,9 @@ from django.template import loader
 from .forms import UserCreationFormExtended
 from django.contrib.auth import authenticate
 from django.contrib.auth import login as auth_login
-
-
 from django.views.decorators.csrf import csrf_exempt
+from .models import User
+from .helpers import redirect_if_authenticated
 
 def index(request):
     template = loader.get_template("vigor/index.html")
@@ -14,10 +14,23 @@ def index(request):
     return HttpResponse(template.render(context, request))
 
 def login(request):
-    return HttpResponse("Login Page.")
+    redirect_if_authenticated(request)
+
+    if request.method == 'POST':
+        username = request.POST['username']
+        password = request.POST['password']
+        user = authenticate(username=username, password=password)
+        if user is not None:
+            auth_login(request, user)
+            return HttpResponseRedirect("/vigor/dashboard")
+        else:
+            return HttpResponseServerError
+    return render(request, 'vigor/login.html')
 
 @csrf_exempt
 def signup(request):
+    redirect_if_authenticated(request)
+
     if request.method == "POST":
         form = UserCreationFormExtended(data = request.POST)
         if form.is_valid():
@@ -25,11 +38,12 @@ def signup(request):
             username = form.cleaned_data["username"]
             password = form.cleaned_data["password1"]
             user = authenticate(username=username, password=password)
+            print(user)
             if user is not None:
                 auth_login(request, user)
-                return HttpResponseRedirect("/dashboard")
+                return HttpResponseRedirect("/vigor/dashboard")
             else:
-                print("Internal Server Error")
+                return HttpResponseServerError
         else:
             print(form.errors)
     else:
@@ -37,7 +51,7 @@ def signup(request):
     return render(request, 'vigor/signup.html', {'form': form})
 
 def dashboard(request):
-    return HttpResponse("Dashboard Page.")
+    return render(request, 'vigor/dashboard.html')
 
 def profile(request):
     return HttpResponse("Profile Page.")
@@ -46,4 +60,4 @@ def add_item(request):
     return HttpResponse("Should include a form with a redirect to dash on submit. The data entered should also appear on the dash")
 
 def users(request):
-    return HttpResponse(Users.objects.all())
+    return HttpResponse(User.objects.all())

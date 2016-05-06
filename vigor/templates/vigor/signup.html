@@ -1,3 +1,6 @@
+{% load staticfiles %}
+<link rel="stylesheet" href="{% static 'vigor/style.css' %}">
+
 <form method="post">
   {% csrf_token %}
   {{ form.as_p }}
