@@ -2,10 +2,11 @@ from django.shortcuts import render
 from django.http import HttpResponse, HttpResponseRedirect
 from django.template import loader
 from .forms import UserCreationFormExtended
-from django.contrib.auth import authenticate
+from django.contrib.auth import authenticate, logout as auth_logout
 from django.contrib.auth import login as auth_login
 from django.views.decorators.csrf import csrf_exempt
 from .models import User
+from django.contrib.auth.decorators import login_required
 from .helpers import redirect_if_authenticated
 
 def index(request):
@@ -50,12 +51,20 @@ def signup(request):
         form = UserCreationFormExtended()
     return render(request, 'vigor/signup.html', {'form': form})
 
+@login_required
+def logout(request):
+    auth_logout(request)
+    return HttpResponseRedirect("/vigor/")
+
+@login_required
 def dashboard(request):
     return render(request, 'vigor/dashboard.html')
 
+@login_required
 def profile(request):
     return HttpResponse("Profile Page.")
 
+@login_required
 def add_item(request):
     return HttpResponse("Should include a form with a redirect to dash on submit. The data entered should also appear on the dash")
 
