@@ -1,5 +1,4 @@
-{% if user.is_authenticated %}
-    <p>Welcome, {{ user.username }}. Thanks for logging in.</p>
-{% else %}
-    <p>Welcome, new user. Please log in.</p>
-{% endif %}
+{% load staticfiles %}
+<link rel="stylesheet" type="text/css" href="{% static 'vigor/style.css' %}">
+
+<h2>Dashboard</h2>

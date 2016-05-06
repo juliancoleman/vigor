@@ -6,6 +6,7 @@ from django.contrib.auth import authenticate
 from django.contrib.auth import login as auth_login
 from django.views.decorators.csrf import csrf_exempt
 from .models import User
+from .helpers import is_authenticated
 
 def index(request):
     template = loader.get_template("vigor/index.html")
@@ -13,8 +14,7 @@ def index(request):
     return HttpResponse(template.render(context, request))
 
 def login(request):
-    if request.user.is_authenticated():
-        return HttpResponseRedirect("/vigor/dashboard")
+    is_authenticated(request)
 
     if request.method == 'POST':
         username = request.POST['username']
@@ -22,15 +22,14 @@ def login(request):
         user = authenticate(username=username, password=password)
         if user is not None:
             auth_login(request, user)
-            return HttpResponseRedirect("/vigor/dashboard") # change to just `/dashboard` when in production
+            return HttpResponseRedirect("/vigor/dashboard")
         else:
-            print("Internal Server Error")
+            return HttpResponseServerError
     return render(request, 'vigor/login.html')
 
 @csrf_exempt
 def signup(request):
-    if request.user.is_authenticated():
-        return HttpResponseRedirect("/vigor/dashboard")
+    is_authenticated(request)
 
     if request.method == "POST":
         form = UserCreationFormExtended(data = request.POST)
@@ -42,9 +41,9 @@ def signup(request):
             print(user)
             if user is not None:
                 auth_login(request, user)
-                return HttpResponseRedirect("/vigor/dashboard") # change to just `/dashboard` when in production
+                return HttpResponseRedirect("/vigor/dashboard")
             else:
-                print("Internal Server Error")
+                return HttpResponseServerError
         else:
             print(form.errors)
     else:
@@ -52,7 +51,7 @@ def signup(request):
     return render(request, 'vigor/signup.html', {'form': form})
 
 def dashboard(request):
-    return HttpResponse("Dashboard Page.")
+    return render(request, 'vigor/dashboard.html')
 
 def profile(request):
     return HttpResponse("Profile Page.")

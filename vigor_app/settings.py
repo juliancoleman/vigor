@@ -56,7 +56,9 @@ ROOT_URLCONF = 'vigor_app.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [
+            'vigor/templates',
+        ],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -68,6 +70,8 @@ TEMPLATES = [
         },
     },
 ]
+
+LOGIN_REDIRECT_URL = '/dashboard'
 
 WSGI_APPLICATION = 'vigor_app.wsgi.application'
 
