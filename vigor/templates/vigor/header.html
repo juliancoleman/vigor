@@ -10,8 +10,7 @@
       <li><a href="/vigor/login">Login</a></li>
       <li><a href="/vigor/signup">Signup</a></li>
     </ul>
-    {% endif %}
-    {% if user.is_authenticated %}
+    {% else %}
     <ul>
       <li><a href="/vigor/dashboard">Dashboard</a></li>
       <li><a href="/vigor/profile">{{user.username}}</a></li>
