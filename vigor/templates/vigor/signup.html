@@ -1,10 +1,6 @@
 {% load staticfiles %}
 <link rel="stylesheet" href="{% static 'vigor/style.css' %}">
-<<<<<<< HEAD
 {% include "vigor/header.html" %}
-=======
-
->>>>>>> master
 <form method="post">
   {% csrf_token %}
   {{ form.as_p }}
