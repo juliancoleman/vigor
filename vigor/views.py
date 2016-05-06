@@ -6,7 +6,7 @@ from django.contrib.auth import authenticate
 from django.contrib.auth import login as auth_login
 from django.views.decorators.csrf import csrf_exempt
 from .models import User
-from .helpers import is_authenticated
+from .helpers import redirect_if_authenticated
 
 def index(request):
     template = loader.get_template("vigor/index.html")
@@ -14,7 +14,7 @@ def index(request):
     return HttpResponse(template.render(context, request))
 
 def login(request):
-    is_authenticated(request)
+    redirect_if_authenticated(request)
 
     if request.method == 'POST':
         username = request.POST['username']
@@ -29,7 +29,7 @@ def login(request):
 
 @csrf_exempt
 def signup(request):
-    is_authenticated(request)
+    redirect_if_authenticated(request)
 
     if request.method == "POST":
         form = UserCreationFormExtended(data = request.POST)
