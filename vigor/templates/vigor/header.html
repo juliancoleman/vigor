@@ -1,11 +1,11 @@
 <header>
   <nav>
+    {% if not user.is_authenticated %}
     <ul>
-      <li><a href="#">Vigor</a></li>
+      <li><a href="/vigor/">Vigor</a></li>
       <li><a href="https://juliancoleman.github.io/docs">Docs</a></li>
       <li><a href="https://github.com/juliancoleman/vigor">Github</a></li>
     </ul>
-    {% if not user.is_authenticated %}
     <ul>
       <li><a href="/vigor/login">Login</a></li>
       <li><a href="/vigor/signup">Signup</a></li>

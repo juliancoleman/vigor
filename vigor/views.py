@@ -62,7 +62,7 @@ def dashboard(request):
 
 @login_required
 def profile(request):
-    return HttpResponse("Profile Page.")
+    return render(request, 'vigor/profile.html')
 
 @login_required
 def add_item(request):
