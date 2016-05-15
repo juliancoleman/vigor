@@ -1,0 +1,79 @@
+html {
+  font-family: 'Roboto', 'Noto', sans-serif !important;
+}
+
+/* Display4(11.20) */
+.md-display-4 {
+  font-size: 112px;
+  font-weight: 300;
+  letter-spacing: -0.010em;
+  line-height: 112px;
+}
+/* Display3(5.600) */
+.md-display-3 {
+  font-size: 56px;
+  font-weight: 400;
+  letter-spacing: -0.005em;
+  line-height: 56px;
+}
+/* Display2(4.500) */
+.md-display-2 {
+  font-size: 45px;
+  font-weight: 400;
+  line-height: 64px;
+}
+/* Display1(3.400) */
+.md-display-1 {
+  font-size: 34px;
+  font-weight: 400;
+  line-height: 40px;
+}
+/* Headline(2.400) */
+.md-headline {
+  font-size: 24px;
+  font-weight: 400;
+  line-height: 32px;
+}
+/* Title(2.000) */
+.md-title {
+  font-size: 20px;
+  font-weight: 500;
+  letter-spacing: 0.005em;
+}
+/* Subhead(1.600) */
+.md-subhead {
+  font-size: 16px;
+  font-weight: 400;
+  letter-spacing: 0.010em;
+  line-height: 24px;
+}
+/* Body(1.400) */
+.md-body-1 {
+  font-size: 14px;
+  font-weight: 400;
+  letter-spacing: 0.010em;
+  line-height: 20px;
+}
+.md-body-2 {
+  font-size: 14px;
+  font-weight: 500;
+  letter-spacing: 0.010em;
+  line-height: 24px;
+}
+/* Caption(1.200) */
+.md-caption {
+  font-size: 12px;
+  letter-spacing: 0.020em;
+}
+/* Button */
+.md-button {
+  letter-spacing: 0.010em;
+}
+
+/*button, select, html, textarea, input {
+  font-family: sans-serif;
+}*/
+
+select, button, textarea, input {
+  font-size: 100%;
+}

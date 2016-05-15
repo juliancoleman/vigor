@@ -1,6 +1,5 @@
 from django.shortcuts import render
 from django.http import HttpResponse, HttpResponseRedirect
-from django.template import loader
 from .forms import UserCreationFormExtended
 from django.contrib.auth import authenticate, logout as auth_logout
 from django.contrib.auth import login as auth_login
@@ -10,9 +9,7 @@ from django.contrib.auth.decorators import login_required
 from .helpers import redirect_if_authenticated
 
 def index(request):
-    template = loader.get_template("vigor/index.html")
-    context = {}
-    return HttpResponse(template.render(context, request))
+    return render(request, 'vigor/index.html')
 
 def login(request):
     redirect_if_authenticated(request)

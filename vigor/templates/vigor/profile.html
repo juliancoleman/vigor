@@ -1,3 +1,5 @@
+{% load staticfiles %}
+<link rel="stylesheet" type="text/css" href="{% static 'vigor/style.css' %}">
 {% include "vigor/header.html" %}
 
-<h1>Profile of @{{ user.username }}</h1>
+<h3>Profile of @{{ user.username }}</h3>

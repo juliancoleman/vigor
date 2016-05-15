@@ -3,18 +3,19 @@
     {% if not user.is_authenticated %}
     <ul>
       <li><a href="/vigor/">Vigor</a></li>
-      <li><a href="https://juliancoleman.github.io/docs">Docs</a></li>
-      <li><a href="https://github.com/juliancoleman/vigor">Github</a></li>
+      <li><a href="https://juliancoleman.github.io/docs" class="icon ion-ios-book"></a></li>
+      <li><a href="https://github.com/juliancoleman/vigor" class="icon ion-logo-github"></a></li>
     </ul>
     <ul>
-      <li><a href="/vigor/login">Login</a></li>
-      <li><a href="/vigor/signup">Signup</a></li>
+      <li><a href="/vigor/login" class="icon ion-ios-log-in"></a></li>
+      <li><a href="/vigor/signup" class="icon ion-ios-person-add"></a></li>
     </ul>
     {% else %}
+    <ul></ul>
     <ul>
-      <li><a href="/vigor/dashboard">Dashboard</a></li>
+      <li><a href="/vigor/dashboard" class="icon ion-ios-speedometer"></a></li>
       <li><a href="/vigor/profile">{{user.username}}</a></li>
-      <li><a href="/vigor/logout">Logout</a></li>
+      <li><a href="/vigor/logout" class="icon ion-ios-log-out"></a></li>
     </ul>
     {% endif %}
   </nav>
