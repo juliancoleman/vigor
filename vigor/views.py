@@ -105,26 +105,6 @@ def preferences(req):
 
     return render(req, 'prefs.html', {'form': form, 'saved': saved, 'pw_changed': pw_changed, 'password_error': password_error})
 
-# @login_required
-# def preferences(req):
-#     user = req.user
-#     saved = False
-#     form = None
-#     if req.method == 'GET':
-#         form = UserPrefsForm(instance = user.prefs)
-#     elif req.method == 'POST':
-#         form = UserPrefsForm(req.POST, instance = user.prefs)
-#
-#         if form.is_valid():
-#             form.full_clean()
-#             form.save()
-#             req.session['django_timezone'] = user.prefs.time_zone
-#             saved = True
-#
-#             if not user.items.all():
-#                 return HttpResponseRedirect(reverse('add_meal'))
-#     return render(req, 'prefs.html', {'form': form, 'saved': saved})
-
 def dashboard(req):
     user = req.user
     first_time = False
@@ -134,68 +114,3 @@ def dashboard(req):
 
     sys_messages = SystemMessage.objects.all()
     return render(req, 'dashboard.html', {'sys_messages': sys_messages, 'first_time': first_time})
-#
-# def login(request):
-#     redirect_if_authenticated(request)
-#
-#     if request.method == 'POST':
-#         username = request.POST['username']
-#         password = request.POST['password']
-#         user = authenticate(username=username, password=password)
-#         if user is not None:
-#             auth_login(request, user)
-#             return HttpResponseRedirect('/vigor/dashboard')
-#         else:
-#             return HttpResponseServerError
-#     return render(request, 'vigor/login.html')
-#
-# @csrf_exempt
-# def signup(request):
-#     redirect_if_authenticated(request)
-#
-#     if request.method == 'POST':
-#         form = UserCreationFormExtended(data = request.POST)
-#         if form.is_valid():
-#             form.save()
-#             username = form.cleaned_data['username']
-#             password = form.cleaned_data['password1']
-#             user = authenticate(username=username, password=password)
-#             print(user)
-#             if user is not None:
-#                 auth_login(request, user)
-#                 return HttpResponseRedirect('/vigor/dashboard')
-#             else:
-#                 return HttpResponseServerError
-#         else:
-#             print(form.errors)
-#     else:
-#         form = UserCreationFormExtended()
-#     return render(request, 'vigor/signup.html', {'form': form})
-#
-# @login_required
-# def logout(request):
-#     auth_logout(request)
-#     return HttpResponseRedirect('/vigor/')
-#
-# @login_required
-# def dashboard(request):
-#     return render(request, 'vigor/dashboard.html')
-#
-# @login_required
-# def profile(request):
-#     return render(request, 'vigor/profile.html')
-#
-# @login_required
-# def add_item(request):
-#     return render(request, 'vigor/add-item.html')
-#
-# @login_required
-# def users(request):
-#     user = request.user
-#     if not user.is_superuser and not request.impersonator:
-#         return HttpResponseForbidden('Forbidden')
-#     else:
-#         users = list(User.objects.all())
-#         users = sorted(users, reverse=True)
-#         users = sorted(users, reverse=True)
-#         return render(request, 'users.html', {'users': users})
