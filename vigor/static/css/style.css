@@ -1,5 +1,5 @@
-@import "material-typography-1.0.8/css/typography.css";
-@import "ionicons-3.0/dist/css/ionicons.min.css";
+@import "../bower_components/material-typography/css/typography.css";
+@import "../bower_components/Ionicons/dist/css/ionicons.min.css";
 
 /*
 COLOR PALETTE
