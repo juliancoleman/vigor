@@ -1,0 +1,74 @@
+@import "material-typography-1.0.8/css/typography.css";
+@import "ionicons-3.0/dist/css/ionicons.min.css";
+
+/*
+COLOR PALETTE
+
+Primary - rgba(155, 38, 175, 1)
+Secondary - rgba(122, 30, 161, 1), rgba(105, 26, 153, 1), and rgba(25, 118, 210, 1)
+Button - #68efad, #1B5E20
+Whites - #fff, #ccc
+Blacks - #333
+*/
+
+* {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+/* constants */
+a:hover { color: #fff; }
+.icon { font-size: 28px !important; }
+input {
+  border: 1px #ccc solid;
+  background: #fff !important;
+  border-radius: 4px 4px;
+  padding: 4px 4px;
+  width: 100%;
+}
+main {
+  text-align: center;
+}
+
+/* header section */
+header {
+  max-width: 100vw;
+  padding: 5px 10px;
+  background: #333;
+  color: #ccc;
+  font-family: 'Raleway';
+}
+nav, nav ul {
+  display: -webkit-flex;
+  display: -moz-flex;
+  display: -ms-flex;
+  display: -o-flex;
+  display: flex;
+  justify-content: space-between;
+}
+nav, ul {
+  -ms-align-items: center;
+  align-items: center;
+}
+nav ul * { padding: 0 1vw; }
+a {
+  text-decoration: none;
+  color: inherit;
+  -webkit-transition: color 0.15s linear;
+  -o-transition: color 0.15s linear;
+  transition: color 0.15s linear;
+}
+
+.auth {
+  border: 1px solid #ccc;
+  border-radius: 8px 8px;
+  padding: 10px 25px;
+  max-width: 350px;
+  background: #eee;
+  display: inline-block;
+  vertical-align: top;
+}
+.auth .helptext {
+  display: none;
+}

@@ -1,0 +1,3 @@
+function switchAuthTab() {
+  return;
+}

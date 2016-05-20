@@ -1,0 +1,53 @@
+{% extends "base.html" %}
+
+{% block page_name %}Login{% endblock %}
+
+{% block content %}
+
+  {% if form.errors %}
+    <p>Your username and password didn't match. Please try again.</p>
+  {% endif %}
+  <!-- Register -->
+  <form action="/vigor/register/" method="POST" autocomplete="off" role="form" class="auth">
+    {% csrf_token %}
+    <div>
+      <label for="username">Username</label>
+      <input type="text" name="username" value="">
+    </div>
+    <div>
+      <label for="password">Password</label>
+      <input id="pw1" type="password" name="password" value="">
+    </div>
+    <div>
+      <label for="password2">Confirm Password</label>
+      <input id="pw2" type="password" name="password2" value="">
+    </div>
+    <div>
+      <label for="email">Email</label>
+      <input type="email" name="email" value="">
+    </div>
+    <div>
+      <button id="register-button">Register</button>
+    </div>
+  </form>
+
+  <!-- Login -->
+  <form action="{% url 'login' %}" method="POST" autocomplete="on" role="form" class="auth">
+    {% csrf_token %}
+    {% if next %}
+      <input type="hidden" name="next" value="{{ next }}">
+    {% endif %}
+    <div>
+      <label for="username">Username</label>
+      <input type="text" id="username" name="username" placholder="">
+    </div>
+    <div>
+      <label for="password">Password</label>
+      <input type="password" id="password" name="password" placeholder="">
+    </div>
+    <div>
+      <button>Login</button>
+    </div>
+  </form>
+
+{% endblock %}

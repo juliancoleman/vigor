@@ -1,0 +1,92 @@
+{% extends 'base.html' %}
+{% load tz %}
+
+{% block page_name %}Preferences{% endblock %}
+
+{% block content %}
+  <div>
+    {% if saved %}
+      <p>Your preferences have been saved</p>
+    {% endif %}
+
+    <form action='.' method='POST' autocomplete='off'>
+      {% csrf_token %}
+      <h2>Background Information</h2>
+      <span>
+        These options help to determine a calorie regimen
+        personalized just for you. This information is
+        collected anonymously and is never shared with anyone
+      </span>
+      <div>
+        <label for='id_gender'>Gender</label>
+        <select name='gender' id='id_gender'>
+          <option value='M' {% if user.prefs.gender == 'M' %} selected='selected' {% endif %}>Male</option>
+          <option value='F' {% if user.prefs.gender == 'F' %} selelcted='selected' {% endif %}>Female</option>
+        </select>
+      </div>
+      <div>
+        <label for="id_ethnicity">Ethnicity</label>
+        <select name="ethnicity" id="id_ethnicity">
+          <option value="White" {% if user.prefs.ethnicity == 'White' %} selected='selected' {% endif %}>White</option>
+          <option value="European" {% if user.prefs.ethnicity == 'European' %} selected='selected' {% endif %}>European</option>
+          <option value="African American" {% if user.prefs.ethnicity == 'African American' %} selected='selected' {% endif %}>African American</option>
+          <option value="Hispanic / Latino" {% if user.prefs.ethnicity == 'Hispanic / Latino' %} selected='selected' {% endif %}>Hispanic / Latino</option>
+          <option value="Asian" {% if user.prefs.ethnicity == 'Asian' %} selected='selected' {% endif %}>Asian</option>
+          <option value="Middle Eastern" {% if user.prefs.ethnicity == 'Middle Eastern' %} selected='selected' {% endif %}>Middle Eastern</option>
+          <option value="Pacific Islander" {% if user.prefs.ethnicity == 'Pacific Islander' %} selected='selected' {% endif %}>Pacific Islander</option>
+          <option value="Native American / Alaskan" {% if user.prefs.ethnicity == 'Native American / Alaskan' %} selected='selected' {% endif %}>Native American / Alaskan</option>
+        </select>
+      </div>
+      <div class='birth_block'>
+        <div>
+          <label for='id_birth_month'>MM</label>
+          <input type='text' name='birth_month' id='id_birth_month' {% if user.prefs.birth_month %} value='{{ user.prefs.birth_month }}' {% endif %}>
+        </div>
+        <div>
+          <label for='id_birth_day'>DD</label>
+          <input type='text' name='birth_day' id='id_birth_day' {% if user.prefs.birth_day %} value='{{ user.prefs.birth_day }}' {% endif %}>
+        </div>
+        <div>
+          <label for='id_birth_year'>YYYY</label>
+          <input type='text' name='birth_year' id='id_birth_year' {% if user.prefs.birth_year %} value='{{ user.prefs.birth_year }}' {% endif %}>
+        </div>
+      </div>
+      <div class="height_block">
+        <div>
+          <label for="id_height_feet">Ft.</label>
+          <input type="text" name='height_feet' id='id_height_feet' {% if user.prefs.height_feet %} value='{{ user.prefs.height_feet }}' {% endif %}>
+        </div>
+        <div>
+          <label for="id_height_inches">In.</label>
+          <input type="text" name='height_inches' id='id_height_inches' {% if user.prefs.height_inches %} value='{{ user.prefs.height_inches }}' {% endif %}>
+        </div>
+      </div>
+      <div>
+        <label for="id_weight">Weight (lbs.)</label>
+        <input type="text" name='weight' id='id_weight' {% if user.prefs.weight %} value='{{ user.prefs.weight }}' {% endif %}>
+      </div>
+      <div>
+        <label for="id_determination">Determination</label>
+        <select name="determination" id="id_determination">
+          <option value="Gain Weight"{% if user.prefs.determination == 'Gain Weight' %} selected='selected' {% endif %}>Gain Weight</option>
+          <option value="Lose Weight"{% if user.prefs.determination == 'Lose Weight' %} selected='selected' {% endif %}>Lose Weight</option>
+          <option value="Maintain Weight"{% if user.prefs.determination == 'Maintain Weight' %} selected='selected' {% endif %}>Maintain Weight</option>
+        </select>
+      </div>
+      <div>
+        <label class="required" for="id_date_format">Date Format:</label>
+        <select id="id_date_format" class="form-control" name="date_format">
+          <option value="MM/DD/YYYY" {% if user.prefs.date_format == 'MM/DD/YYYY' %}selected="selected"{% endif %}>MM/DD/YYYY</option>
+          <option value="DD/MM/YYYY" {% if user.prefs.date_format == 'DD/MM/YYYY' %}selected="selected"{% endif %}>DD/MM/YYYY</option>
+        </select>
+      </div>
+      <div>
+        <label class="required" for="id_time_zone">Time Zone:</label>
+        {{ form.time_zone }}
+      </div>
+      <div>
+        <button>Save</button>
+      </div>
+    </form>
+  </div>
+{% endblock %}

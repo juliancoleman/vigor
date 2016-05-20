@@ -1,0 +1,17 @@
+# obviously
+node_modules/
+npm-debug.log
+
+# don't include developmental compiles
+build/
+
+
+# may include this later to provide examples
+test/
+
+# accidental compile locations
+less/*.css
+sass/*.css
+scss/*.css
+styl/*.css
+.sass-cache/
