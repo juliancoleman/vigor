@@ -26,10 +26,7 @@ def login_view(req):
         if user is not None:
             if user.is_active:
                 login(req, user)
-                if next:
-                    return HttpResponseRedirect(next)
-                else:
-                    return HttpResponseRedirect(reverse('dashboard'))
+                return HttpResponseRedirect(reverse('dashboard'))
             else:
                 return HttpResponseForbidden('This account has been disabled')
         else:
