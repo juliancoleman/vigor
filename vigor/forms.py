@@ -38,4 +38,4 @@ class UserPrefsForm(forms.ModelForm):
 class ProfileForm(forms.ModelForm):
     class Meta:
         model = UserPrefs
-        fields = ('gender', 'birth_year',)
+        fields = ('gender', 'birth_year')
