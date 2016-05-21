@@ -28,10 +28,6 @@ class JSONResponse(HttpResponse):
 
 def sign_out(req):
     logout(req)
-    # next = req.GET.get('next', None)
-    # if next:
-    #     return HttpResponseRedirect(next)
-    # else:
     return HttpResponseRedirect(reverse('login'))
 
 @csrf_exempt
