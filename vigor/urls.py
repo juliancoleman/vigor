@@ -9,5 +9,6 @@ urlpatterns = [
     url(r'^signin/$', views.login_view, name='login'),
     url(r'^register/$', ajax.register, name='register'),
     url(r'^preferences/$', views.preferences, name='preferences'),
-    url(r'^dashboard/$', views.dashboard, name='dashboard')
+    url(r'^dashboard/$', views.dashboard, name='dashboard'),
+    url(r'^profile/$', views.profile, name='profile')
 ]

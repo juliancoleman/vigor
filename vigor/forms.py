@@ -22,6 +22,8 @@ class UserPrefsForm(forms.ModelForm):
     class Meta:
         model = UserPrefs
         fields = (
+            'first_name',
+            'last_name',
             'gender',
             'birth_year',
             'birth_month',

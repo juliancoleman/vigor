@@ -57,6 +57,8 @@ class UserPrefs(models.Model):
 
     user = models.OneToOneField(User, primary_key = True, related_name = 'prefs')
     # Profile Settings
+    first_name = models.CharField(max_length = 50, null = True, blank = True)
+    last_name = models.CharField(max_length = 100, null = True, blank = True)
     gender = models.CharField(max_length = 1, choices = GENDERS, null = True, blank = True)
     birth_year = models.IntegerField(null = True, blank = True)
     birth_month = models.IntegerField(null = True, blank = True)
@@ -113,6 +115,12 @@ class UserPrefs(models.Model):
                 return 10 * self.weight + 6.25 * (((self.height_feet * 12) + self.height_inches) * 2.54) - 5 * self.get_age() + 5 - 500
             elif self.gender == 'F':
                 return 10 * self.weight + 6.25 (((self.height_feet * 12) + self.height_inches) * 2.54) - 5 * self.get_age() - 161 - 500
+
+    def get_BMI(self):
+        kg = self.weight * 0.45
+        cm = ((self.height_feet * 12) + self.height_inches) * 0.025
+        sq = cm**2
+        return kg / sq
 
     def __unicode__(self):
         return 'Preferences for user: %s' % self.user.username

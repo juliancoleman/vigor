@@ -1,8 +1,71 @@
 {% extends "base.html" %}
+{% load staticfiles %}
+
+{% block page_name %}Vigor{% endblock %}
+
+{% block additional_scripts %}
+<link rel="stylesheet" href="{% static 'bower_components/Swiper/dist/css/swiper.min.css' %}">
+<script src="{% static 'bower_components/Swiper/dist/js/swiper.min.js' %}"></script>
+{% endblock %}
 
 {% block content %}
 
-  <h4>Vigor Beta</h4>
-  <span>Welcome to Vigor</span>
+  <!-- the big ol' banner -->
+  <div id='banner-bg' class="swiper-container">
+    <div class="swiper-wrapper">
+      <div class="swiper-slide" id="slide1">
+        <figure>
+          <h1>Vigor</h1>
+        </figure>
+      </div>
+      <div class="swiper-slide" id="slide2">
+        <figure>
+          <h2>For the Runner</h2>
+        </figure>
+      </div>
+      <div class="swiper-slide" id="slide3">
+        <figure>
+          <h2>For the Boxer</h2>
+        </figure>
+      </div>
+      <div class="swiper-slide" id="slide4">
+        <figure>
+          <h2>For Every Athlete</h2>
+        </figure>
+      </div>
+    </div>
+  </div>
 
+  <div class="container">
+    <div class="threes">
+      <section>
+        <h7 class='color-primary'>Fitness</h7>
+        <hr>
+        <span>Coming soon, Vigor will allow you to track your fitness and personal goals based on your determination. This will guide you through a regimen, targeting areas of growth, while maintaining a healthy diet.</span>
+      </section>
+      <section>
+        <h7 class='color-primary'>Nutrition</h7>
+        <hr>
+        <span>Coming soon, Vigor will allow you to enter meal information throughout the day. With this, we can provide users a personal nutritional regimen based on the most recent DRI tables.</span>
+      </section>
+      <section>
+        <h7 class='color-primary'>Lifestyle</h7>
+        <hr>
+        <span>Vigor fits perfectly into every lifestyle. Your goals and regimens are all unique to you, the user. You are not bound to a 2,000-calorie diet, and you decide your regimen.</span>
+      </section>
+    </div>
+  </div>
+
+{% endblock %}
+
+{% block extra_js %}
+  <script>
+    var swiper = new Swiper('.swiper-container', {
+      spaceBetween: 0,
+      centeredSlides: true,
+      autoplay: 3500,
+      autoplayDisableOnInteraction: false,
+      effect: 'fade'
+    });
+  </script>
 {% endblock %}

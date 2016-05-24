@@ -67,6 +67,8 @@ def preferences(req):
         elif password2 and not password:
             password_error = 'Please enter both passwords'
         form = UserPrefsForm(req.POST, instance = user.prefs)
+        first_name = req.POST['first_name']
+        last_name = req.POST['last_name']
         gender = req.POST['gender']
         birth_year = req.POST['birth_year']
         birth_month = req.POST['birth_month']
@@ -77,6 +79,8 @@ def preferences(req):
         ethnicity = req.POST['ethnicity']
         determination = req.POST['determination']
 
+        saved_first_name = str(user.prefs.first_name)
+        saved_last_name = str(user.prefs.last_name)
         saved_gender = str(user.prefs.gender)
         saved_birth_year = str(user.prefs.birth_year)
         saved_birth_month = str(user.prefs.birth_month)
@@ -87,7 +91,9 @@ def preferences(req):
         saved_ethnicity = str(user.prefs.ethnicity)
         saved_determination = str(user.prefs.determination)
 
-        if gender == saved_gender and \
+        if first_name == saved_first_name and \
+            last_name == saved_last_name and \
+            gender == saved_gender and \
             birth_year == saved_birth_year and \
             birth_month == saved_birth_month and \
             birth_day == saved_birth_day and \
@@ -114,3 +120,7 @@ def dashboard(req):
 
     sys_messages = SystemMessage.objects.all()
     return render(req, 'dashboard.html', {'sys_messages': sys_messages, 'first_time': first_time})
+
+def profile(req):
+    user = req.user
+    return render(req, 'profile.html')

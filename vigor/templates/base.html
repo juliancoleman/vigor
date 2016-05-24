@@ -6,6 +6,10 @@
   <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
   {% block title %}<title>{% block page_name %}{% endblock %}</title>{% endblock %}
   <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+  <script src="{% static 'bower_components/jquery/dist/jquery.min.js' %}"></script>
+
+  {% block additional_scripts %}
+  {% endblock %}
 </head>
 <body>
 
@@ -13,7 +17,7 @@
     <nav>
       {% if not user.is_authenticated %}
       <ul>
-        <li><a href="{% url 'index' %}">Vigor</a></li>
+        <li><a href="{% url 'index' %}"><h7>Vigor</h7></a></li>
         <li><a href="https://github.com/juliancoleman/vigor_app" class="icon ion-logo-github"></a></li>
       </ul>
       <ul>
@@ -23,7 +27,7 @@
       <ul></ul>
       <ul>
         <li><a href="{% url 'dashboard' %}" class="icon ion-ios-speedometer"></a></li>
-        <li><a href="{% url 'preferences' %}">{{ user.username }}</a></li>
+        <li><a href="{% url 'profile' %}">{{ user.username }}</a></li>
         <li><a href="{% url 'sign_out' %}" class="icon ion-ios-log-out"></a></li>
       </ul>
       {% endif %}
@@ -44,5 +48,7 @@
     </section>
   </footer>
 
+  {% block extra_js %}
+  {% endblock %}
 </body>
 </html>
