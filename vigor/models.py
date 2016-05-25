@@ -100,26 +100,25 @@ class UserPrefs(models.Model):
         return self.get_age() > 18
 
     def get_calorie_regimen(self):
-        height_cm = (((self.height_feet * 12) + self.height_inches) * 2.54) - 5
+        height_cm = ((self.height_feet * 12) + self.height_inches) * 2.54
         age = self.get_age()
         k = 6.25
-        j = 10
 
         if self.determination == 'Gain Weight':
             if self.gender == 'M':
-                return j * self.weight + k * height_cm * age + 505
+                return 10 * self.weight + k * height_cm - 5 * age + 505
             elif self.gender == 'F':
-                return j * self.weight + k * height_cm * age + 339
+                return 10 * self.weight + k * height_cm - 5 * age + 500 - 161
         elif self.determination == 'Maintain Weight':
             if self.gender == 'M':
-                return j * self.weight + k * height_cm * age + 5
+                return 10 * self.weight + k * height_cm - 5 * age + 5
             elif self.gender == 'F':
-                return j * self.weight + k * height_cm * age - 161
+                return 10 * self.weight + k * height_cm - 5 * age - 161
         elif self.determination == 'Lose Weight':
             if self.gender == 'M':
-                return j * self.weight + k * height_cm * age + 495
+                return 10 * self.weight + k * height_cm - 5 * age + 5 - 500
             elif self.gender == 'F':
-                return j * self.weight + k * height_cm * age - 661
+                return 10 * self.weight + k * height_cm - 5 * age - 161 - 500
 
     def get_BMI(self):
         kg = self.weight * 0.45
