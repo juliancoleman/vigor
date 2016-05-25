@@ -1,0 +1,81 @@
+{% extends "base.html" %}
+
+{% block page_name %}Login{% endblock %}
+
+{% block content %}
+
+  {% if form.errors %}
+    <p>Your username and password didn't match. Please try again.</p>
+  {% endif %}
+  <div id="form-container">
+    <div id="tabs">
+      <div id="auth_login" class='tab active'><h7>Login</h7></div>
+      <div id="auth_register" class='tab'><h7>Register</h7></div>
+    </div>
+
+    <!-- Register -->
+    <form id="register_form" action="/vigor/register/" method="POST" autocomplete="off" role="form" class="auth">
+      {% csrf_token %}
+      <div class='md-text-field'>
+        <input required type="text" name="username" value="">
+        <div class="bar"></div>
+        <label for="username">Username</label>
+      </div>
+      <div class='md-text-field'>
+        <input required id="pw1" type="password" name="password" value="">
+        <div class="bar"></div>
+        <label for="password">Password</label>
+      </div>
+      <div class='md-text-field'>
+        <input required id="pw2" type="password" name="password2" value="">
+        <div class="bar"></div>
+        <label for="password2">Confirm Password</label>
+      </div>
+      <div class='md-text-field'>
+        <input required type="email" name="email" value="">
+        <div class="bar"></div>
+        <label for="email">Email</label>
+      </div>
+      <button id="register-button" class='md-button-raised'>Register</button>
+    </form>
+
+    <!-- Login -->
+    <form id="login_form" action="{% url 'login' %}" method="POST" autocomplete="on" role="form" class="auth active">
+      {% csrf_token %}
+      {% if next %}
+      <input required type="hidden" name="next" value="{{ next }}">
+      {% endif %}
+      <div class='md-text-field'>
+        <input required type="text" id="username" name="username" placholder="">
+        <div class="bar"></div>
+        <label for="username">Username</label>
+      </div>
+      <div class='md-text-field'>
+        <input required type="password" id="password" name="password" placeholder="">
+        <div class="bar"></div>
+        <label for="password">Password</label>
+      </div>
+      <button class='md-button-raised'>Login</button>
+    </form>
+  </div>
+
+{% endblock %}
+
+{% block extra_js %}
+  <script type='text/javascript'>
+    $(document).ready(function() {
+      $('#auth_login').on('click', function() {
+        $(this).addClass('active')
+        $('#auth_register').removeClass('active')
+        $('#login_form').addClass('active')
+        $('#register_form').removeClass('active')
+      })
+      $('#auth_register').on('click', function() {
+        $(this).addClass('active')
+        $('#auth_login').removeClass('active')
+        $('#login_form').removeClass('active')
+        $('#register_form').addClass('active')
+      })
+    })
+  </script>
+{% endblock %}

@@ -25,8 +25,15 @@ SECRET_KEY = '=4!ljgfz)^g80+_zl0ag&gr7^o0^m(skgga&kr5cg%74l!5q(x'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['vigor.io']
 
+# Additional stuff
+REGISTER = True
+ADMINS = (
+    'Julian Coleman', 'julcol03@gmail.com'
+)
+
+MANAGERS = ADMINS
 
 # Application definition
 
@@ -71,7 +78,9 @@ TEMPLATES = [
     },
 ]
 
-LOGIN_REDIRECT_URL = '/dashboard'
+LOGIN_URL = '/sign_in/'
+LOGIN_REDIRECT_URL = '/dashboard/'
+LOGIN_ERROR_URL = '/sign_in/?error=true'
 
 WSGI_APPLICATION = 'vigor_app.wsgi.application'
 

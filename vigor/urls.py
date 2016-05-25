@@ -1,15 +1,14 @@
 from django.conf.urls import url
 
 from . import views
+from . import ajax
 
-app_name = "vigor"
 urlpatterns = [
     url(r'^$', views.index, name='index'),
-    url(r'^login/$', views.login, name='login'),
-    url(r'^signup/$', views.signup, name='signup'),
-    url(r'^logout/$', views.logout, name='logout'),
+    url(r'^sign_out/$', ajax.sign_out, name='sign_out'),
+    url(r'^signin/$', views.login_view, name='login'),
+    url(r'^register/$', ajax.register, name='register'),
+    url(r'^preferences/$', views.preferences, name='preferences'),
     url(r'^dashboard/$', views.dashboard, name='dashboard'),
-    url(r'^profile/$', views.profile, name='profile'),
-    url(r'^add_item/$', views.add_item, name='add_item'),
-    url(r'^users/$', views.users, name='users')
+    url(r'^profile/$', views.profile, name='profile')
 ]
