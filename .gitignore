@@ -1,0 +1,3 @@
+__pycache__/
+db.sqlite3
+vigor/static/bower_components
