@@ -1,5 +1,19 @@
 [![Stories in Ready](https://badge.waffle.io/juliancoleman/vigor-app.png?label=ready&title=Ready)](https://waffle.io/juliancoleman/vigor-app)
 # Vigor
+### built with Python and the Django framework.
+
+Vigor is a nonsubjective fitness and nutrition tracking app, providing regimens as unique as usernames must be.
+Vigor provides a clean interface to view and track your fitness goals, while providing nutrition information
+from the US DRI tables that are updated frequently. Whether you're seeking to gain, lose, or maintain weight,
+Vigor has a diet and exercise regimen built just for you.
+
+Soon, users will be able to add exercise events and meals to track their daily fitness goals as well as dietary
+intake. The "Progress" page will keep track of meals you've eaten and the nutrition you've received from each,
+whether cooking or freezing losses should be factored, and how much you burned off while exercising. Vigor
+provides tips unique to each user, explaining the benefits of a user-specific diet, that is not enforcing a
+stricter diet.
+
+Get active with Vigor!
 
 To use this app, simply clone with `git`, and proceed with the following.
 
