@@ -19,6 +19,12 @@ To use this app, simply clone with `git`, and proceed with the following.
 
 #### Make sure the app works
 
+Install project dependencies
+
+```
+pip install -r requirements.txt
+```
+
 Make migrations
 
 ```
