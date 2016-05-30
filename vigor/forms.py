@@ -32,6 +32,7 @@ class UserPrefsForm(forms.ModelForm):
             'height_feet',
             'height_inches',
             'weight',
+            'determination',
             'time_zone',
             'date_format'
         )
