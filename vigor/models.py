@@ -23,7 +23,7 @@ class SystemMessage(models.Model):
             return True
         return False
 
-    def __unicode__(self):
+    def __str__(self):
         return '%s: %s...' % (self.author.username, self.message[:50])
 
     class Meta:
@@ -126,7 +126,7 @@ class UserPrefs(models.Model):
         sq = cm**2
         return kg / sq
 
-    def __unicode__(self):
+    def __str__(self):
         return 'Preferences for user: %s' % self.user.username
 
     class Meta:
