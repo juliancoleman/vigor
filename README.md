@@ -2,7 +2,7 @@
 # Vigor
 ### built with Python and the Django framework.
 
-Vigor is a nonsubjective fitness and nutrition tracking app, providing regimens as unique as usernames must be.
+Vigor is a nonsubjective fitness and nutrition tracking app, providing regimens as unique as your username.
 Vigor provides a clean interface to view and track your fitness goals, while providing nutrition information
 from the US DRI tables that are updated frequently. Whether you're seeking to gain, lose, or maintain weight,
 Vigor has a diet and exercise regimen built just for you.
